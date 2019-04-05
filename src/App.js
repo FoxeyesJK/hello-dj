@@ -14,7 +14,6 @@ class App extends React.Component {
     const state = e.target.elements.state.value;
     const api_call = await fetch(`https://edmtrain.com/api/events?locationIds=${city},${state}&client=${API_KEY}`);
     const data = await api_call.json();
-    console.log(data);
     //set the values of the state
     this.setState({
       items: data
@@ -22,21 +21,20 @@ class App extends React.Component {
   }
 
   render() {
-    const itemList = this.state.items.map(
+    const itemList = (this.state.items.data && this.state.items.data.length > 0) ? this.state.items.data.map(
       (item, index) => 
-      <li 
+      <li
         key={index}>
-        {item}
+        {item.link}
       </li>
-    )
+    ) : ''
     return (
+
       <div>
         <p>Hello!</p>
         <h1>hi</h1>
         <Form getWeather={this.getWeather}/>
-      <ul>
-        {itemList}
-      </ul>
+        <ul>{itemList}</ul>
       </div>
     )
   }
