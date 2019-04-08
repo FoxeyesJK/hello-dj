@@ -8,7 +8,7 @@ class App extends React.Component {
     items: []
   };
   
-  getWeather = async (e) => {
+  getDJevents = async (e) => {
     e.preventDefault();
     const city = e.target.elements.city.value;
     const state = e.target.elements.state.value;
@@ -21,6 +21,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.state.items.data);
     const itemList = (this.state.items.data && this.state.items.data.length > 0) ? this.state.items.data.map(
       (item, index) => 
       <li
@@ -28,13 +29,16 @@ class App extends React.Component {
         {item.link}
       </li>
     ) : ''
-    return (
 
+    let DJname = "Illenium";
+    let ImgLink = "https://edmtrain.s3.amazonaws.com/img/artist/" + DJname + ".jpg?v=1";
+    return (
       <div>
         <p>Hello!</p>
         <h1>hi</h1>
-        <Form getWeather={this.getWeather}/>
+        <Form getDJevents={this.getDJevents}/>
         <ul>{itemList}</ul>
+        <img src={ImgLink}></img> 
       </div>
     )
   }
