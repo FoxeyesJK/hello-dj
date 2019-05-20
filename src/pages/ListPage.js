@@ -1,12 +1,13 @@
 import React from 'react';
 import Button from 'components/common/Button';
+import PageTemplate from 'components/common/PageTemplate';
 //import Form from "./components/Form.js";
 const ListPage = () => {
     return (
-        <div>
+        <PageTemplate>
             Listq
             <Button theme="" to="/editor">A New Post</Button>
-        </div>
+        </PageTemplate>
     );
 };
 /*
