@@ -1,12 +1,22 @@
 import React from 'react';
-import Button from 'components/common/Button';
 import PageTemplate from 'components/common/PageTemplate';
+import Button from 'components/common/Button';
+import ListWrapper from 'components/list/ListWrapper';
+import ListContainer from 'containers/list/ListContainer';
+
 //import Form from "./components/Form.js";
-const ListPage = () => {
+const ListPage = ({match}) => {
+    const { city = 36, state = 94 } = match.params;
     return (
         <PageTemplate>
+          <ListWrapper>
+            <ListContainer
+              city={city}
+              state={state}
+              />
             Listq
             <Button theme="" to="/editor">A New Post</Button>
+          </ListWrapper>
         </PageTemplate>
     );
 };

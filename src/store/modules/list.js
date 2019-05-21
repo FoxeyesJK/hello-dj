@@ -1,22 +1,7 @@
 
 import { createAction, handleActions } from 'redux-actions';
 
-import { Map } from 'immutable';
-import { pender } from 'redux-pender';
-
-// action types
-
-// action creators
-
-// initial state
-const initialState = Map({});
-
-// reducer
-export default handleActions({
-
-}, initialState)
-/*
-import { Map, List } from 'immutable';
+import { Map, List, fromJS } from 'immutable';
 import { pender } from 'redux-pender';
 
 import * as api from 'lib/api';
@@ -25,12 +10,11 @@ import * as api from 'lib/api';
 const GET_POST_LIST = 'list/GET_POST_LIST';
 
 // action creators
-export const getPostList = createAction(GET_POST_LIST, api.getPostLIst, meta => meta);
+export const getPostList = createAction(GET_POST_LIST, api.getPostList, meta => meta);
 
 // initial state
 const initialState = Map({
     posts: List(),
-    lastPage: null
 });
 
 // reducer
@@ -45,4 +29,4 @@ export default handleActions({
                         .set('lastPage', parseInt(lastPage, 10));
         }
     })
-}, initialState)*/
+}, initialState)
