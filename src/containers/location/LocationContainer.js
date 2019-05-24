@@ -17,5 +17,3 @@ class LocationContainer extends Component{
 }
 
 import React from "react";
-
-gr

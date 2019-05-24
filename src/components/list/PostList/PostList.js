@@ -1,25 +1,30 @@
-import React from 'react';
+/*import React from 'react';
 // import styles from './PostList.scss';
 // import classNames from 'classnames/bind';
 import  { Link } from 'react-router-dom';
-import moment from 'moment';
-import removeMd from 'remove-markdown';
 
 // const cx = classNames.bind(styles);
-
+  
 const PostItem = ({title, body, publishedDate, tags, id}) => {
     const tagList = tags.map(
         tag => <Link key={tag} to={`/tag/${tag}`}>#{tag}</Link>
     );
     return (
         <div>
-            <h2><Link to={`/post/${id}`}>{title}</Link></h2>
-            <div>{moment(publishedDate).format('ll')}</div>
-            <p>{removeMd(body)}</p>
-            <div>
-                {tagList}
-            </div> 
-        </div>
+        <p>Hello!</p>
+              <h1>hi</h1>
+              <Form getDJevents={this.getDJevents}/>
+              <ul>{itemList}</ul>
+              <img src={ImgLink}></img> 
+              </div>
+        // <div>
+        //     <h2><Link to={`/post/${id}`}>{title}</Link></h2>
+        //     <div></div>
+        //     <p></p>
+        //     <div>
+        //         {tagList}
+        //     </div> 
+        // </div>
     )
 }
 
@@ -28,14 +33,18 @@ const PostList = ({posts}) => {
         (post) => {
             const { _id, title, body, publishedDate, tags } = post.toJS();
             return (
+
                 <PostItem
-                    title={title}
-                    body={body}
-                    publishedDate={publishedDate}
-                    tags={tags}
-                    key={_id}
-                    id={_id}
-                />
+
+            />
+                // <PostItem
+                //     title={title}
+                //     body={body}
+                //     publishedDate={publishedDate}
+                //     tags={tags}
+                //     key={_id}
+                //     id={_id}
+                // />
             )
         }
     );
@@ -46,4 +55,4 @@ const PostList = ({posts}) => {
     );
 };
 
-export default PostList;
+export default PostList;*/

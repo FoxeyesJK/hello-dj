@@ -29,7 +29,19 @@ class ListContainer extends Component{
     }
 
     render() {
-        const { loading, posts, city, lastPage, state } = this.props;
+        const { loading, posts, city, state } = this.props;
+
+        const itemList = (this.state.items.data && this.state.items.data.length > 0) ? this.state.items.data.map(
+            (item, index) => 
+            <li
+              key={index}>
+              {item.link}
+            </li>
+          ) : '';
+
+          let DJname = "Illenium";
+          let ImgLink = "https://edmtrain.s3.amazonaws.com/img/artist/" + DJname + ".jpg?v=1";
+
         if(loading) return null; // Do not show anything while loading
         return (
             /*<div>
@@ -40,8 +52,12 @@ class ListContainer extends Component{
             </form>
             </div>*/
             <div>
-                hello
-                <PostList posts={posts}/>
+              <p>Hello!</p>
+              <h1>hi</h1>
+              {/* <Form getDJevents={this.getDJevents}/> */}
+              <ul>{itemList}</ul>
+              <img src={ImgLink}></img> 
+                              {/* <PostList posts={posts}/> */}
                 {/* <PostList posts={posts}/>
                 <Pagination page={page} lastPage={lastPage} tag={tag}/> */}
             </div>
