@@ -30,14 +30,14 @@ class ListContainer extends Component{
 
     render() {
         const { loading, posts, city, state } = this.props;
-
-        const itemList = (this.state.items.data && this.state.items.data.length > 0) ? this.state.items.data.map(
-            (item, index) => 
-            <li
-              key={index}>
-              {item.link}
-            </li>
-          ) : '';
+        //console.log(posts)
+        // const itemList = (this.state.items.data && this.state.items.data.length > 0) ? this.state..data.map(
+        //     (item, index) => 
+        //     <li
+        //       key={index}>
+        //       {item.link}
+        //     </li>
+        //   ) : '';
 
           let DJname = "Illenium";
           let ImgLink = "https://edmtrain.s3.amazonaws.com/img/artist/" + DJname + ".jpg?v=1";
@@ -52,14 +52,13 @@ class ListContainer extends Component{
             </form>
             </div>*/
             <div>
-              <p>Hello!</p>
+                <PostList posts={posts}/>
+                {/* {posts} */}
+                {/* <p>Hello!</p>
               <h1>hi</h1>
-              {/* <Form getDJevents={this.getDJevents}/> */}
+              <Form getDJevents={this.getDJevents}/>
               <ul>{itemList}</ul>
-              <img src={ImgLink}></img> 
-                              {/* <PostList posts={posts}/> */}
-                {/* <PostList posts={posts}/>
-                <Pagination page={page} lastPage={lastPage} tag={tag}/> */}
+              <img src={ImgLink}></img>  */}
             </div>
         );
     }
@@ -67,7 +66,7 @@ class ListContainer extends Component{
 
 export default connect(
     (state) => ({
-        lastPage: state.list.get('lastPage'),
+        //lastPage: state.list.get('lastPage'),
         posts: state.list.get('posts'),
         loading: state.pender.pending['list/GET_POST_LIST']
     }),
