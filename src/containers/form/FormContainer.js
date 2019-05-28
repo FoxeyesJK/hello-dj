@@ -32,24 +32,25 @@ class FormContainer extends Component {
     }
 
     handleChange = (e) => {
-        const { value } = e.target;
+        const { city, state } = e.target;
         const { InputActions } = this.props;
-        InputActions.setInput(value);
+        InputActions.setInput(city, state);
     }
 
     handleInsert = () => {
-        const { InputActions, value } = this.props;
+        const { InputActions, city, state } = this.props;
         InputActions.setInput('');
     }
 
     render() {
-        const { value } = this.props;
+        const { city, state } = this.props;
         const { handleChange, handleInsert } = this;
         return (
             <PostForm 
-                handleChange={handleChange}
-                handeInsert={handleInsert}
-                value={value}
+                onChange={handleChange}
+                onInsert={handleInsert}
+                city={city}
+                state={state}
             />
         );
     }
