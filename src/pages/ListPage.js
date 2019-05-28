@@ -3,12 +3,20 @@ import PageTemplate from 'components/common/PageTemplate';
 import Button from 'components/common/Button';
 import ListWrapper from 'components/list/ListWrapper';
 import ListContainer from 'containers/list/ListContainer';
+import FormWrapper from 'components/form/FormWrapper';
+import FormContainer from 'containers/form/FormContainer';
 
 //import Form from "./components/Form.js";
 const ListPage = ({match}) => {
     const { city = 36, state = 94 } = match.params;
     return (
         <PageTemplate>
+          <FormWrapper>
+            <FormContainer
+              city={city}
+              state={state}
+              />
+          </FormWrapper>
           <ListWrapper>
             <ListContainer
               city={city}
