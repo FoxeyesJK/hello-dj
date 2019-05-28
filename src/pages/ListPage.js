@@ -22,8 +22,8 @@ const ListPage = ({match}) => {
               city={city}
               state={state}
               />
-            Listq
-            <Button theme="" to="/editor">A New Post</Button>
+            
+            <Button theme="" to="/editor">Default Button</Button>
           </ListWrapper>
         </PageTemplate>
     );

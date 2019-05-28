@@ -24,7 +24,6 @@ export default handleActions({
         onSuccess: (state, action) => {
             const { data: posts } = action.payload;
 
-            const lastPage = action.payload.headers['last-page'];
             return state.set('posts', posts);
             //return state.set('posts', fromJS(posts));
         }

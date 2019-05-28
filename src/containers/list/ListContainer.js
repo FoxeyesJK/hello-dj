@@ -6,16 +6,25 @@ import { bindActionCreators } from 'redux';
 import * as listActions from 'store/modules/list';
 
 class ListContainer extends Component{
-    getPostList = () => {
-        const { city, state, ListActions } = this.props;
-        ListActions.getPostList({
-            city,
-            state
-        })
+    initialize = async () => {
+        const { ListActions, city, state } = this.props;
+        try {
+            await ListActions.getPostList(city, state);
+        } catch(e) {
+            console.log(e);
+        } 
     }
+    // getPostList = () => {
+    //     const { city, state, ListActions } = this.props;
+    //     ListActions.getPostList({
+    //         city,
+    //         state
+    //     })
+    // }
 
     componentDidMount() {
-        this.getPostList();
+        //this.getPostList();
+        this.initialize();
     }
 
     componentDidUpdate(prevProps, prevState) {
