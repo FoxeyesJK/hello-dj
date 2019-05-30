@@ -13,8 +13,8 @@ const PostForm = ({city, state, onChange, onInsert }) => {
 
     return (
     <div>
-        city: <input onChange={onchange} value={city} onKeyPress={handleKeyPress} />
-        state: <input onChange={onchange} value={state} onKeyPress={handleKeyPress} />
+        city: <input onchange={onChange} value={this.state.city} onKeyPress={handleKeyPress} />
+        state: <input onchange={onChange} value={this.state.state} onKeyPress={handleKeyPress} />
     </div>
     );
 };

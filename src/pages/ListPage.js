@@ -7,8 +7,13 @@ import FormWrapper from 'components/form/FormWrapper';
 import FormContainer from 'containers/form/FormContainer';
 
 //import Form from "./components/Form.js";
+
+// this.state = {
+//   city: 36,
+//   state: 96
+// }
 const ListPage = ({match}) => {
-    const { city = 36, state = 94 } = match.params;
+    const { city = 36, state = 96} = match.params;
     return (
         <PageTemplate>
           <FormWrapper>

@@ -20,6 +20,10 @@ class FormContainer extends Component {
     //     this.getLocation();
     // }
 
+    // state = {
+    //     city: 32,
+    //     state: 94
+    // }
     // Only renders when props are updated
     componentDidUpdate(prevProps, prevState) {
         // Update list when location data is changed
@@ -32,33 +36,67 @@ class FormContainer extends Component {
     }
 
     handleChange = (e) => {
+        // this.setState({
+        //     city: e.target.city,
+        //     state: e.target.state
+        // })
+        //const { InputActions } = this.props;
+        // this.setState({
+        //     city: e.target.city,
+        //     state: e.target.state
+        // });
+
         const { city, state } = e.target;
-        const { InputActions } = this.props;
-        InputActions.setInput(city, state);
+        const { inputActions } = this.props;
+        inputActions.changeLocationInput(33);
     }
 
-    handleInsert = () => {
-        const { InputActions, city, state } = this.props;
-        InputActions.setInput('');
+    handleInsert = async () => {
+        const { inputActions, city, state } = this.props;
+        try {
+            // Initializing input, if sucess close modal
+            await inputActions.search(city);
+            inputActions.hideModal('search');
+        } catch(e) {
+            console.log(e);
+        }
     }
+    
+    handleKeyPress = (e) => {
+        if((e.key) === 'Enter') {
+            this.handleInsert();
+        }
+    }
+
+    // handleInsert = (e) => {
+    //     const { city, state } = e.target;
+    //     const { InputActions } = this.props;
+    //     InputActions.setInput({city, state});
+    // }
 
     render() {
+        //const { city, state } = this.state;
+        console.log('hello')
         const { city, state } = this.props;
-        const { handleChange, handleInsert } = this;
+        const { handleChange, handleInsert, handleKeyPress } = this;
         return (
-            <PostForm 
-                onChange={handleChange}
-                onInsert={handleInsert}
-                city={city}
-                state={state}
-            />
+            <div>
+        city: <input onChange={handleChange} value={city} onKeyPress={handleKeyPress} />
+        state: <input onChange={handleChange} value={state} onKeyPress={handleKeyPress}/>
+    </div>
+            // <PostForm 
+            //     onChange={handleChange}
+            //     onInsert={handleInsert}
+            //     city={city}
+            //     state={state}
+            // />
         );
     }
 }
 
 export default connect(
     (state) => ({
-        value: state.input//.get('value')
+        city: state.input.get('city')
     }),
     (dispatch) => ({
         // bindActionCreators allows dispatch data without initalizing one by one

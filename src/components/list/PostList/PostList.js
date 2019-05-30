@@ -34,11 +34,11 @@ const PostList = ({posts}) => {
     console.log(posts.data)
     console.log(posts.data)
     const postList = (posts.data) ? posts.data.map(
-        (post) => {
+        (post, _id) => {
             //const { _id } = post.toJS();
             console.log(post);
             return(
-            <div>
+            <div key={_id}>
                 {post.link}
                 </div>
                 )
