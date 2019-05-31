@@ -46,17 +46,19 @@ class FormContainer extends Component {
         //     state: e.target.state
         // });
 
-        const { city, state } = e.target;
+        const { value } = e.target;
+        console.log(e.target.value)
+        console.log(value);
         const { inputActions } = this.props;
-        inputActions.changeLocationInput(33);
+        inputActions.changeLocationInput(value);
     }
 
     handleInsert = async () => {
         const { inputActions, city, state } = this.props;
         try {
             // Initializing input, if sucess close modal
-            await inputActions.search(city);
-            inputActions.hideModal('search');
+            await inputActions.changeLocationInput(city);
+            //inputActions.hideModal('search');
         } catch(e) {
             console.log(e);
         }
@@ -76,7 +78,6 @@ class FormContainer extends Component {
 
     render() {
         //const { city, state } = this.state;
-        console.log('hello')
         const { city, state } = this.props;
         const { handleChange, handleInsert, handleKeyPress } = this;
         return (
@@ -96,7 +97,8 @@ class FormContainer extends Component {
 
 export default connect(
     (state) => ({
-        city: state.input.get('city')
+        city: state.city
+        //loading: state.pender.pending['input/CHANGE_LOCATION_INPUT']
     }),
     (dispatch) => ({
         // bindActionCreators allows dispatch data without initalizing one by one

@@ -5,7 +5,7 @@ import * as api from 'lib/api';
 
 const SEARCH = 'input/SEARCH';
 const SET_INPUT = 'input/SET_INPUT';
-const CHANGE_LOCATION_INPUT = 'post/CHANGE_LOCATION_INPUT';
+const CHANGE_LOCATION_INPUT = 'input/CHANGE_LOCATION_INPUT';
 
 export const search = createAction(SEARCH, api.getPostList);
 export const setInput = createAction(SET_INPUT);
@@ -35,7 +35,7 @@ export default handleActions({
     }),
     [CHANGE_LOCATION_INPUT]: (state, action) => {
         const { payload: city } = action;
-        return state.set('city', city)
+        return state.set('city',city);
                     //.set('state', state);
     }
 }, initialState)
