@@ -13,19 +13,19 @@ import FormContainer from 'containers/form/FormContainer';
 //   state: 96
 // }
 const ListPage = ({match}) => {
-    const { city = 36, state = 96} = match.params;
+    // const { city = 36, state = 96} = match.params;
     return (
         <PageTemplate>
           <FormWrapper>
             <FormContainer
-              city={city}
-              state={state}
+              // city={city}
+              // state={state}
               />
           </FormWrapper>
           <ListWrapper>
             <ListContainer
-              city={city}
-              state={state}
+              // city={city}
+              // state={state}
               />
             
             <Button theme="" to="/editor">Default Button</Button>

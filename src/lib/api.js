@@ -6,7 +6,7 @@ export const writePost = ({title, body, tags}) => axios.post('/api/posts', {titl
 export const getPost = (id) => axios.get(`/api/posts/${id}`);
 
 // export const getPostList = ({tag, page}) => axios.get(`/api/posts/?${queryString.stringify({tag, page})}`);
-export const getPostList = (city, state) => axios.get(`https://edmtrain.com/api/events?locationIds=${city},${state}&client=${API_KEY}`, { city, state });
+export const getPostList = (city, state) => axios.post(`https://edmtrain.com/api/events?locationIds=${city},${state}&client=${API_KEY}`, { city, state });
 //   const countBreeds = async () => {
 //     const breeds = await getBreeds()
   
