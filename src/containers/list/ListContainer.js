@@ -5,6 +5,11 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as listActions from 'store/modules/list';
 
+import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
+import * as contentful from 'contentful';
+//import Course from '../components/Course';
+
 class ListContainer extends Component{
     initialize = async () => {
         const { ListActions, city, state } = this.props;
@@ -68,6 +73,17 @@ class ListContainer extends Component{
               <Form getDJevents={this.getDJevents}/>
               <ul>{itemList}</ul>
               <img src={ImgLink}></img>  */}
+              <TextField style={{padding: 24}}
+                id="searchInput"
+                placeholder="Search for Courses"
+                margin="normal"
+                onChange={this.onSearchInputChange} />
+            <Grid container spacing={24} style={{padding: 24}}>
+                <Grid item xs={12} sm={6} lg={4} xl={3}>
+                    <div style={{height:0, paddingTop: '56.25%'}}
+                    title="hello"> hi</div>
+                </Grid>
+            </Grid>
             </div>
         );
     }
