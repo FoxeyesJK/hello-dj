@@ -1,15 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Root from './Root';
-//import './index.css';
-//import App from './App';
-import * as serviceWorker from './serviceWorker';
-//import 'style/base.scss'
+const Koa = require('koa');
+const Router = require('koa-router');
+const bodyParser = require('koa-bodyparser');
 
-//ReactDOM.render(<App />, document.getElementById('root'));
-ReactDOM.render(<Root />, document.getElementById('root'));
+const api = require('./api');
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+const app = new Koa();
+const router = new Router();
+
+//Router Setting
+router.use('/api', api.routes());
+
+//Bpdyparser before router
+app.use(bodyParser());
+
+//Router in app instances
+app.use(router.routes()).use(router.allowedMethods());
+
+app.listen(4000, () => {
+    console.log('listening to port 4000');
+});
