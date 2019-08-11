@@ -16,18 +16,53 @@ exports.write = async (ctx) => {
     }
 }
 
-exports.list = (ctx) => {
-
+exports.list = async (ctx) => {
+    try {
+        const posts = await Post.find().exec();
+        ctx.body = posts;
+    } catch(e) {
+        ctx.throw(e, 500);
+    }
 }
 
-exports.read = (ctx) => {
+exports.read = async (ctx) => {
+    const { id } = ctx.params;
+    try {
+        const post = await Post.findById(id).exec();
 
+        if(!post) {
+            ctx.status = 404;
+            return;
+        }
+        ctx.body = post;
+    } catch(e) {
+        ctx.throw(e, 500);
+    }
 }
 
-exports.remove = (ctx) => {
-
+exports.remove = async (ctx) => {
+    const { id } = ctx.params;
+    try {
+        await Post.findByIdAndRemove(id).exec();
+        ctx.status = 204;
+    } catch(e) {
+        ctx.throw(e, 500);
+    }
 }
 
-exports.update = (ctx) => {
+exports.update = async (ctx) => {
+    const { id } = ctx.params;
+    try {
+        const post = await Post.findByIdAndUpdate(id, ctx.request.body, {
+            new: true
+        }).exec();
 
-}
+        if(!post) {
+            ctx.status = 404;
+            return;
+        }
+        ctx.body = post;
+    } catch(e) {
+        ctx.throw(e, 500);
+    } 
+};
