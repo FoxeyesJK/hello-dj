@@ -3,12 +3,15 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const Post = new Schema({
-    title: String,
-    body: String,
-    tags: [String],
+    name: String,
+    genre: [String],
     publishedDate: {
         type: Date,
         default: new Date()
+    },
+    like: {
+        type: Number,
+        default: 0
     }
 });
 

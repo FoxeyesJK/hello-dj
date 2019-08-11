@@ -16,9 +16,8 @@ exports.checkObjectId = (ctx, next) => {
 exports.write = async (ctx) => {
     //Request body can be found from ctx.request.body in REST API
     const schema = Joi.object().keys({
-        title: Joi.string().required(),
-        body: Joi.string().required(),
-        tags: Joi.array().items(Joi.string()).required()
+        name: Joi.string().required(),
+        //genre: Joi.array().items(Joi.string()).required(),
     });
 
     const result = Joi.validate(ctx.request.body, schema);
@@ -28,11 +27,11 @@ exports.write = async (ctx) => {
         ctx.body = result.error;
         return;
     }
-    
-    const { title, body, tags } = ctx.request.body;
+
+    const { name, genre, like } = ctx.request.body;
 
     const post = new Post({
-        title, body, tags
+        name, genre, like
     });
 
     try {

@@ -24,6 +24,9 @@ const app = new Koa();
 const router = new Router();
 
 //Router Setting
+router.get('/', (ctx) => {
+    ctx.body = 'home';
+})
 router.use('/api', api.routes());
 
 //Bpdyparser before router
